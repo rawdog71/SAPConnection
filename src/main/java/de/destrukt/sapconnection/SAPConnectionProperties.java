@@ -51,7 +51,13 @@ public class SAPConnectionProperties {
     public SAPConnectionProperties() {
         try {
             props = new HashedProperties().load("sapconnection.props");
-            setProps();
+            SAPHost = props.getProperty("SAPHOST");
+            SAPSystem = props.getProperty("SAPSYSTEM");
+            SAPClient = props.getProperty("SAPCLIENT");
+            SAPUser = props.getProperty("SAPUSER");
+            SAPPassword = props.getProperty("SAPPW");
+            SAPLanguage = props.getProperty("SAPLANGUAGE");
+            SAPDestination = props.getProperty("SAPDESTINATION");
         } catch (IOException ex) {
             Logger.getLogger(SAPConnectionProperties.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -60,19 +66,15 @@ public class SAPConnectionProperties {
    public SAPConnectionProperties(String propsfile) {
         try {
             props = new HashedProperties().load(propsfile);
-            setProps();
+            SAPHost = props.getProperty("SAPHOST");
+            SAPSystem = props.getProperty("SAPSYSTEM");
+            SAPClient = props.getProperty("SAPCLIENT");
+            SAPUser = props.getProperty("SAPUSER");
+            SAPPassword = props.getProperty("SAPPW");
+            SAPLanguage = props.getProperty("SAPLANGUAGE");
+            SAPDestination = props.getProperty("SAPDESTINATION");
         } catch (IOException ex) {
             Logger.getLogger(SAPConnectionProperties.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-   
-   private void setProps() {
-        SAPHost = props.getProperty("SAPHOST");
-        SAPSystem = props.getProperty("SAPSYSTEM");
-        SAPClient = props.getProperty("SAPCLIENT");
-        SAPUser = props.getProperty("SAPUSER");
-        SAPPassword = props.getProperty("SAPPW");
-        SAPLanguage = props.getProperty("SAPLANGUAGE");
-        SAPDestination = props.getProperty("SAPDESTINATION");
-   }
 }
